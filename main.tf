@@ -25,3 +25,29 @@ resource "aws_subnet" "public" {
         var.subnet_public_tags
    )
 }
+
+resource "aws_subnet" "private" {
+  count = length(var.subnet_private)
+  vpc_id     = aws_vpc.main.id
+  cidr_block = var.subnet_private[count.index]
+  availability_zone = local.az_names[count.index]
+  tags = merge(local.common_tags,
+        {
+            Name = "${var.project}-${var.environment}-private-${local.az_names[count.index]}"
+        },
+        var.subnet_private_tags
+   )
+}
+
+resource "aws_subnet" "database" {
+  count = length(var.subnet_database)
+  vpc_id     = aws_vpc.main.id
+  cidr_block = var.subnet_database[count.index]
+  availability_zone = local.az_names[count.index]
+  tags = merge(local.common_tags,
+        {
+            Name = "${var.project}-${var.environment}-database-${local.az_names[count.index]}"
+        },
+        var.subnet_database_tags
+   )
+}
