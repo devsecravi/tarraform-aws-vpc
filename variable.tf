@@ -65,3 +65,13 @@ variable "aw_route_table_database" {
      type = map
      default = {}
 }
+
+variable "eip_nat_tags"{
+      type = map
+      default = {}
+}
+
+variable "nat_gateway_tags"{
+      type = map
+      default = {}
+}
