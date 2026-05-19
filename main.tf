@@ -13,7 +13,7 @@ resource "aws_internet_gateway" "gw" {
 }
 
 resource "aws_subnet" "public" {
-  count = length(subnet_public)
+  count = length(var.subnet_public)
   vpc_id     = aws_vpc.main.id
   cidr_block = var.subnet_public[count.index]
 
