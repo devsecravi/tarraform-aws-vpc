@@ -51,3 +51,8 @@ variable "subnet_database_tags"{
       default = {}
 }
 
+variable "aw_route_table_public" {
+     type = map
+     default = {}
+}
+
