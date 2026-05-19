@@ -58,7 +58,7 @@ resource "aws_route_table" "public" {
   tags = merge(
         local.common_tags,
         {
-           Name = "{var.project}-{var.environment}-public"
+           Name = "${var.project}-${var.environment}-public"
         }
   )
 }
