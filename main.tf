@@ -59,7 +59,6 @@ resource "aws_route_table" "public" {
         local.common_tags,
         {
            Name = "{var.project}-{var.environment}-public"
-        },
-        var.aw_route_table_public
+        }
   )
 }
