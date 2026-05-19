@@ -1,4 +1,4 @@
-resource "aws_vpc_peering_connection" "main" {
+resource "aws_vpc_peering_connection" "default" {
   
 
   peer_vpc_id   = data.aws_vpc.default.id
