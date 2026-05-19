@@ -56,3 +56,12 @@ variable "aw_route_table_public" {
      default = {}
 }
 
+variable "aw_route_table_private" {
+     type = map
+     default = {}
+}
+
+variable "aw_route_table_database" {
+     type = map
+     default = {}
+}

@@ -59,6 +59,31 @@ resource "aws_route_table" "public" {
         local.common_tags,
         {
            Name = "${var.project}-${var.environment}-public"
-        }
+        },
+        var.aw_route_table_public
+  )
+}
+
+resource "aws_route_table" "private" {
+  vpc_id = aws_vpc.main.id
+
+  tags = merge(
+        local.common_tags,
+        {
+           Name = "${var.project}-${var.environment}-private"
+        },
+        var.aw_route_table_private
+  )
+}
+
+resource "aws_route_table" "database" {
+  vpc_id = aws_vpc.main.id
+
+  tags = merge(
+        local.common_tags,
+        {
+           Name = "${var.project}-${var.environment}-database"
+        },
+        var.aw_route_table_database
   )
 }
