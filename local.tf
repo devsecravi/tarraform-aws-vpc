@@ -6,18 +6,18 @@ locals {
             Environment = var.environment
             Terraform = true
       }
-      vpc_final_tags = {
+      vpc_final_tags = merge(
                 local.common_tags,
                 {
                     Name = "${var.project}-${var.environment}"
                 },
                 var.vpc_tags
-        }
-        gw_final_tags = {
+      )
+        gw_final_tags =merge(
                  local.common_tags,
                  {
                     Name = "${var.project}"
                  },
                  var.gw_tags
-        }
+        )
 }
