@@ -5,7 +5,7 @@ variable "project"{
 
 variable "environment" {
 
-    typr = string
+    type = string
 }
 
 variable "cidr_block"{
