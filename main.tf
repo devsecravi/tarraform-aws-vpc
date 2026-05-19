@@ -100,7 +100,7 @@ resource "aws_eip" "nat" {
   tags = merge(
         local.common_tags,
         {
-           Name = "{var.project}-{var.environment}-nat"
+           Name = "${var.project}-${var.environment}-nat"
         },
         var.eip_nat_tags
   )
@@ -113,7 +113,7 @@ resource "aws_nat_gateway" "main" {
   tags = merge(
         local.common_tags,
         {
-            Name = "{var.project}-{var.environment}"
+            Name = "${var.project}-${var.environment}"
         },
         var.nat_gateway_tags
   )
@@ -124,14 +124,12 @@ resource "aws_nat_gateway" "main" {
 }
 
 resource "aws_route" "private" {
-  count = length(var.aw_route_table_private)
   route_table_id            = aws_route_table.private.id
   destination_cidr_block    = "0.0.0.0/0"
   gateway_id= aws_internet_gateway.gw.id
 }
 
 resource "aws_route" "database" {
-  count = length(var.aw_route_table_database)
   route_table_id            = aws_route_table.database.id
   destination_cidr_block    = "0.0.0.0/0"
   gateway_id= aws_internet_gateway.gw.id
